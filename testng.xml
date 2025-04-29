@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="dummy suite" parallel="tests" thread-count="4">
+
+    <listeners>
+        <listener class-name="Wraperes.ExtentReporterNG"/>
+    </listeners>
+    <test name="StandardUserFlow">
+        <parameter name="username" value="standard_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <classes>
+            <class name="BaseTest">
+                <methods>
+                    <include name="standardLogin"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+
+    <test name="LockedOutUserFlow">
+        <parameter name="username" value="locked_out_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <classes>
+            <class name="BaseTest">
+                <methods>
+                    <include name="lockedOutLogin"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="ProblemUserFlow">
+        <parameter name="username" value="problem_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <classes>
+            <class name="BaseTest">
+                <methods>
+                    <include name="problemUserLogin"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+
+    <test name="PerformanceUserFlow">
+        <parameter name="username" value="performance_glitch_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <classes>
+            <class name="BaseTest">
+                <methods>
+                    <include name="PerformanceGlitchLogin"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+
+</suite>
