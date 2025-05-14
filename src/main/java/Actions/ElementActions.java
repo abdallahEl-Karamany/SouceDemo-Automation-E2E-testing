@@ -15,7 +15,7 @@ public class ElementActions {
     WebDriver driver;
 
     public ElementActions() {
-        this.driver = BrowserActions.driver.get();
+        this.driver = BrowserActions.localDriver.get();
     }
 
 

@@ -14,12 +14,14 @@ import org.testng.ITestResult;
 import java.io.File;
 import java.io.IOException;
 
-import static Actions.BrowserActions.driver;
+
+import static Actions.BrowserActions.localDriver;
 
 public class ExtentReporterNG implements ITestListener {
     ThreadLocal<ExtentTest> test = new ThreadLocal<>();
 
     public  ExtentReports getReportObject(){
+
             String reportPath=System.getProperty("user.dir")+"\\reports\\Summary.html";
             ExtentSparkReporter reporter=new ExtentSparkReporter(reportPath);
             reporter.config().setReportName("HTML Report");
@@ -31,10 +33,15 @@ public class ExtentReporterNG implements ITestListener {
     }
     ExtentReports extent= getReportObject();
 
+    private String getFullTestName(ITestResult result) {
+        String testName = result.getTestContext().getName();
+        String methodName = result.getMethod().getMethodName();
+        return testName + "." + methodName;
+    }
     @Override
     public void onTestStart(ITestResult result) {
 
-        test.set(extent.createTest(result.getMethod().getMethodName()));
+        test.set(extent.createTest(getFullTestName(result)));
     }
 
     @Override
@@ -47,7 +54,7 @@ public class ExtentReporterNG implements ITestListener {
     public void onTestFailure(ITestResult result) {
         test.get().log(Status.FAIL, "Test Failed: " + result.getThrowable().getMessage());
 
-        TakesScreenshot ts=(TakesScreenshot)driver.get();
+        TakesScreenshot ts=(TakesScreenshot)localDriver.get();
         File source=ts.getScreenshotAs(OutputType.FILE);
         String tcName= result.getName();
         String filePath=System.getProperty("user.dir")+"\\reports\\" +tcName + ".png";

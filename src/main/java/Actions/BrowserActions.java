@@ -12,7 +12,7 @@ import java.util.UUID;
 
 public class BrowserActions {
 
-    public static ThreadLocal<WebDriver> driver=new ThreadLocal<>();
+    public static ThreadLocal<WebDriver> localDriver=new ThreadLocal<>();
 
 
     public static void webDriverInit(browser Browser){
@@ -22,22 +22,23 @@ public class BrowserActions {
             case chrome:
                 ChromeOptions option = new ChromeOptions();
                 option.addArguments("--incognito"); // Avoids triggering profile-level alerts
-                driver.set(new ChromeDriver(option));
+                localDriver.set(new ChromeDriver(option));
                 break;
-            case edge:driver.set(new EdgeDriver());
+            case edge:localDriver.set(new EdgeDriver());
                 break;
-            case firefox:driver.set(new FirefoxDriver());
+            case firefox:localDriver.set(new FirefoxDriver());
             break;
         }
     }
 
     public static void windowMaximize(){
-        driver.get().manage().window().maximize();
+        localDriver.get().manage().window().maximize();
     }
     public static void closeBrowser(){
-        driver.get().quit();
+        localDriver.get().quit();
+        localDriver.remove();
     }
-    public static WebDriver getDriver(){return driver.get();}
+    public static WebDriver getDriver(){return localDriver.get();}
 
     public enum browser{
         chrome,
