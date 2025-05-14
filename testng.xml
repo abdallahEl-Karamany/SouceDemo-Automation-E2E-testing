@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="dummy suite" parallel="tests" thread-count="4">
-
+<suite name="Souce demo suite" parallel="tests" thread-count="4">
     <listeners>
         <listener class-name="Wraperes.ExtentReporterNG"/>
     </listeners>
@@ -9,12 +8,27 @@
         <parameter name="username" value="standard_user"/>
         <parameter name="password" value="secret_sauce"/>
         <classes>
-            <class name="BaseTest">
+            <class name="LoginPageTest">
                 <methods>
                     <include name="standardLogin"/>
                 </methods>
             </class>
-
+            <class name="ProductsPageTest">
+                <methods>
+                    <include name="addItemsToCart"/>
+                    <include name="addItemThenRemove"/>
+                </methods>
+            </class>
+            <class name="InventoryPageTest"/>
+            <class name="CartPageTest"/>
+            <class name="CheckOutPageTest">
+                <methods>
+                    <include name="setFirstNameOnly"/>
+                    <include name="leavePostalCodeEmpty"/>
+                    <include name="setFullInformation"/>
+                </methods>
+            </class>
+            <class name="OverviewPageTest"/>
         </classes>
     </test>
 
@@ -22,11 +36,27 @@
         <parameter name="username" value="locked_out_user"/>
         <parameter name="password" value="secret_sauce"/>
         <classes>
-            <class name="BaseTest">
+            <class name="LoginPageTest">
                 <methods>
                     <include name="lockedOutLogin"/>
                 </methods>
             </class>
+            <class name="ProductsPageTest">
+                <methods>
+                    <include name="addItemsToCart"/>
+                    <include name="addItemThenRemove"/>
+                </methods>
+            </class>
+            <class name="InventoryPageTest"/>
+            <class name="CartPageTest"/>
+            <class name="CheckOutPageTest">
+                <methods>
+                    <include name="setFirstNameOnly"/>
+                    <include name="leavePostalCodeEmpty"/>
+                    <include name="setFullInformation"/>
+                </methods>
+            </class>
+            <class name="OverviewPageTest"/>
         </classes>
     </test>
 
@@ -34,25 +64,56 @@
         <parameter name="username" value="problem_user"/>
         <parameter name="password" value="secret_sauce"/>
         <classes>
-            <class name="BaseTest">
+            <class name="LoginPageTest">
                 <methods>
                     <include name="problemUserLogin"/>
                 </methods>
             </class>
-
+            <class name="ProductsPageTest">
+                <methods>
+                    <include name="addItemsToCart"/>
+                    <include name="addItemThenRemove"/>
+                </methods>
+            </class>
+            <class name="InventoryPageTest"/>
+            <class name="CartPageTest"/>
+            <class name="CheckOutPageTest">
+                <methods>
+                    <include name="setFirstNameOnly"/>
+                    <include name="leavePostalCodeEmpty"/>
+                    <include name="setFullInformation"/>
+                </methods>
+            </class>
+            <class name="OverviewPageTest"/>
         </classes>
     </test>
+
 
     <test name="PerformanceUserFlow">
         <parameter name="username" value="performance_glitch_user"/>
         <parameter name="password" value="secret_sauce"/>
         <classes>
-            <class name="BaseTest">
+            <class name="LoginPageTest">
                 <methods>
                     <include name="PerformanceGlitchLogin"/>
                 </methods>
             </class>
-
+            <class name="ProductsPageTest">
+                <methods>
+                    <include name="addItemsToCart"/>
+                    <include name="addItemThenRemove"/>
+                </methods>
+            </class>
+            <class name="InventoryPageTest"/>
+            <class name="CartPageTest"/>
+            <class name="CheckOutPageTest">
+                <methods>
+                    <include name="setFirstNameOnly"/>
+                    <include name="leavePostalCodeEmpty"/>
+                    <include name="setFullInformation"/>
+                </methods>
+            </class>
+            <class name="OverviewPageTest"/>
         </classes>
     </test>
 
