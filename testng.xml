@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Souce demo suite" parallel="methods" thread-count="2" data-provider-thread-count="2">
+    <listeners>
+        <listener class-name="Wraperes.ExtentReporterNG"/>
+    </listeners>
+    <test name="StandardUserFlow" >
+        <parameter name="username" value="standard_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <classes>
+            <class name="LoginPageTest"/>
+            <class name="ProductsPageTest"/>
+            <class name="InventoryPageTest"/>
+            <class name="CartPageTest"/>
+            <class name="CheckOutPageTest"/>
+            <class name="OverviewPageTest"/>
+        </classes>
+    </test>
+    <test name="Performance-Glitch_Test" >
+        <parameter name="username" value="performance_glitch_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <classes>
+            <class name="ProductsPageTest"/>
+            <class name="InventoryPageTest"/>
+            <class name="CartPageTest"/>
+            <class name="CheckOutPageTest"/>
+            <class name="OverviewPageTest"/>
+        </classes>
+    </test>
+    <test name="problem_user_Test" >
+        <parameter name="username" value="problem_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <classes>
+            <class name="ProductsPageTest"/>
+            <class name="InventoryPageTest"/>
+            <class name="CartPageTest"/>
+            <class name="CheckOutPageTest"/>
+            <class name="OverviewPageTest"/>
+        </classes>
+    </test>
+
+</suite>
