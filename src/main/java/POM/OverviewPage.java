@@ -12,6 +12,7 @@ public class OverviewPage {
     String cancelButtonSelector="cart_cancel_link ";
     String finishButtonSelector="btn_action";
     String thanksMessageSelector="complete-header";
+    String historyPageLabelSelector="subheader";
     ElementActions act=null;
     public OverviewPage(){
         act=new ElementActions();
@@ -38,6 +39,9 @@ public class OverviewPage {
     public ThanksPage clickFinishButton(){
         act.clickOnElement(ElementActions.Locator.className,finishButtonSelector, ElementActions.Locator.className,thanksMessageSelector,5);
         return new ThanksPage();
+    }
+    public String getHistoryPageTitle(){
+        return act.getElementText(ElementActions.Locator.className,historyPageLabelSelector,10);
     }
 
 }

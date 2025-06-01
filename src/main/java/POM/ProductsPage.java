@@ -14,7 +14,7 @@ public class ProductsPage {
     String priceSelector=productSelector+"//div[@class='inventory_item_price']";
     String cartButtonSelector="a.shopping_cart_link";
     String cartItemCounterSelector="//span[@class='fa-layers-counter shopping_cart_badge']";
-    String productIconSelector=productSelector+"//img";
+
     String productPageLabelSelector="product_label";
 
     ElementActions act;
@@ -57,10 +57,7 @@ public class ProductsPage {
         act.clickOnElement(ElementActions.Locator.cssSelector,cartButtonSelector,20);
         return new CartPage();
     }
-    public InventoryPage clickProductIcon(String productName){
-        act.clickOnElement(ElementActions.Locator.xPath,String.format(productIconSelector,productName),5);
-        return new InventoryPage();
-    }
+
     public String getPageLabelText(){
         return act.getElementText(ElementActions.Locator.className,productPageLabelSelector,10);
     }

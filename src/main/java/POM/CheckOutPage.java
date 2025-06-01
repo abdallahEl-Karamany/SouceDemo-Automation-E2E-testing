@@ -9,6 +9,7 @@ public class CheckOutPage {
     String zipCodeSelector="postal-code";
     String continueButtonSelector="input.btn_primary";
     String cancelButtonSelector="a.cart_cancel_link";
+    String checkOutPageLabelSelector="subheader";
     ElementActions act=null;
     public CheckOutPage(){
         act=new ElementActions();
@@ -39,6 +40,8 @@ public class CheckOutPage {
         act.clickOnElement(ElementActions.Locator.cssSelector,continueButtonSelector,5);
         return new OverviewPage();
     }
-
+    public String getCheckOutPageTitle(){
+        return act.getElementText(ElementActions.Locator.className,checkOutPageLabelSelector,10);
+    }
 
 }
